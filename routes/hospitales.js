@@ -29,9 +29,17 @@ router.post(
 );
 
 //actulizar usuario
-router.put("/:id", [], actualizarHospital);
+router.put(
+  "/:id",
+  [
+    validarJwt,
+    check("nombre", " El nombre es obligatorio para actulizar").not().isEmpty(),
+    validarCampos,
+  ],
+  actualizarHospital
+);
 
 //borrar Hospital
-router.delete("/:id", borrarHospital);
+router.delete("/:id", validarJwt, borrarHospital);
 
 module.exports = router;

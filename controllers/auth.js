@@ -52,6 +52,7 @@ const googleSingIn = async (req, res = response) => {
     //validar por correo
     const usuarioDb = await Usuario.findOne({ email });
     let usuario;
+
     if (!usuarioDb) {
       usuario = new Usuario({
         nombre: name,
@@ -64,7 +65,6 @@ const googleSingIn = async (req, res = response) => {
       //existe el usuario
       usuario = usuarioDb;
       usuario.google = true;
-      usuario.password = "@@@";
     }
 
     //guardar en base de datos
@@ -86,4 +86,16 @@ const googleSingIn = async (req, res = response) => {
   }
 };
 
-module.exports = { login, googleSingIn };
+const renewToken = async (req, res = response) => {
+  const uid = req.uid;
+
+  //Generar token
+  const token = await generarJwt(uid);
+
+  res.json({
+    ok: true,
+    token,
+  });
+};
+
+module.exports = { login, googleSingIn, renewToken };

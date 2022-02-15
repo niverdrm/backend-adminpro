@@ -30,9 +30,18 @@ router.post(
 );
 
 //actulizar usuario
-router.put("/:id", [], actualizarMedico);
+router.put(
+  "/:id",
+  [
+    validarJwt,
+    check("nombre", " El nombre es obligatorio").not().isEmpty(),
+    check("hospital", " El hospital es obligatorio").isMongoId(),
+    validarCampos,
+  ],
+  actualizarMedico
+);
 
 //borrar Hospital
-router.delete("/:id", borrarMedico);
+router.delete("/:id", validarJwt, borrarMedico);
 
 module.exports = router;
