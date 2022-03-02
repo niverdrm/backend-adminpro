@@ -65,6 +65,7 @@ const googleSingIn = async (req, res = response) => {
       //existe el usuario
       usuario = usuarioDb;
       usuario.google = true;
+      usuario.img = picture;
     }
 
     //guardar en base de datos
@@ -86,15 +87,20 @@ const googleSingIn = async (req, res = response) => {
   }
 };
 
+//Renovar token
 const renewToken = async (req, res = response) => {
   const uid = req.uid;
 
   //Generar token
   const token = await generarJwt(uid);
 
+  //Obtener usuario por uid
+  const usuario = await Usuario.findById(uid);
+
   res.json({
     ok: true,
     token,
+    usuario,
   });
 };
 
