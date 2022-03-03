@@ -31,7 +31,7 @@ const login = async (req, res = response) => {
     //Generar un TOKEN - JWT
     const token = await generarJwt(usuarioDb.id);
 
-    res.json({
+    return res.json({
       ok: true,
       token,
       menu: getMenuFrontEnd(usuarioDb.role),
@@ -76,7 +76,7 @@ const googleSingIn = async (req, res = response) => {
     //Generar token
     const token = await generarJwt(usuario.id);
 
-    res.json({
+    return res.json({
       ok: true,
       msg: " google login",
       token,
@@ -100,7 +100,7 @@ const renewToken = async (req, res = response) => {
   //Obtener usuario por uid
   const usuario = await Usuario.findById(uid);
 
-  res.json({
+  return res.json({
     ok: true,
     token,
     usuario,
