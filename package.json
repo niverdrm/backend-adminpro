@@ -8,7 +8,7 @@
     "start:dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Niver Romero",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
