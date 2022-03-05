@@ -95,7 +95,7 @@ const actualizarUsuario = async (req, res = response) => {
       new: true,
     });
 
-    res.json({
+    return res.json({
       ok: true,
       usuarioActualizado,
     });

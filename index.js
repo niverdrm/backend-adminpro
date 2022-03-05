@@ -7,11 +7,11 @@ const { dbConexion } = require("./databese/config");
 //Crear servidor express
 const app = express();
 
-//Base de datos
-dbConexion();
-
 //Configurar cors
 app.use(cors());
+
+//Base de datos
+dbConexion();
 
 //Usar json
 app.use(express.json());
