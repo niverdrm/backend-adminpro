@@ -58,13 +58,13 @@ const actualizarHospital = async (req, res = response) => {
       { new: true }
     );
 
-    res.json({
+    return res.json({
       ok: true,
       msg: "putHospitales",
       hospital: hospitalActualizado,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       msg: "algo salio mal",
     });
@@ -83,7 +83,7 @@ const borrarHospital = async (req, res = response) => {
 
     await Hospital.findByIdAndDelete(id);
 
-    res.json({
+    return res.json({
       ok: true,
       msg: "Hospital ha sido eliminado",
     });

@@ -43,7 +43,7 @@ const crearUsuario = async (req, res = response) => {
     //generar -JWT
     const token = await generarJwt(usuario.id);
 
-    res.json({
+    return res.json({
       ok: true,
       msg: " creando usuario",
       usuario,
