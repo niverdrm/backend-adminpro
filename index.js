@@ -27,6 +27,6 @@ app.use("/api/todo", require("./routes/busquedas"));
 app.use("/api/login", require("./routes/auth"));
 app.use("/api/upload", require("./routes/uploads"));
 
-app.listen(process.env.PORT, () => {
+app.listen(3000, () => {
   console.log("port", process.env.PORT);
 });
